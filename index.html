@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Button with Sound</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        button {
+            position: absolute;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="movingButton" onclick="moveButton()">Click Me</button>
+
+    <audio id="myAudio">
+        <source src="metal-pipe-230698.mp3" type="audio/mp3">
+
+    </audio>
+
+    <script>
+        function moveButton() {
+            let button = document.getElementById("movingButton");
+            let audio = document.getElementById("myAudio");
+
+            audio.currentTime = 0;
+            audio.play();
+
+            let maxX = window.innerWidth - button.clientWidth;
+            let maxY = window.innerHeight - button.clientHeight;
+            let randomX = Math.floor(Math.random() * maxX);
+            let randomY = Math.floor(Math.random() * maxY);
+
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+    </script>
+
+</body>
+</html>
